@@ -1,11 +1,11 @@
 //! Implementation of the basic signature scheme used in the protocol
 
+use crate::pp::Pp;
 use ark_bls12_381::{Bls12_381, Fr, G1Affine, G2Affine, G2Projective};
 use ark_ec::{
     bls12::Bls12,
     hashing::{curve_maps::wb::WBMap, map_to_curve_hasher::MapToCurveBasedHasher, HashToCurve},
     pairing::{Pairing, PairingOutput},
-    AffineRepr,
 };
 use ark_ff::{field_hashers::DefaultFieldHasher, UniformRand};
 use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
@@ -31,7 +31,7 @@ impl SecretKey {
     }
 
     pub fn pub_key(&self) -> PublicKey {
-        PublicKey((G1Affine::generator() * self.0).into())
+        PublicKey((Pp::g1() * self.0).into())
     }
 
     pub fn sign<M: AsRef<[u8]>>(&self, message: M) -> Signature {
@@ -49,7 +49,7 @@ impl PublicKey {
         let fm: G2Affine = hasher.hash(message.as_ref()).unwrap();
 
         let lhs: PairingOutput<Bls12_381> = Bls12::pairing(self.0, fm);
-        let rhs: PairingOutput<Bls12_381> = Bls12::pairing(G1Affine::generator(), signature.0);
+        let rhs: PairingOutput<Bls12_381> = Bls12::pairing(Pp::g1(), signature.0);
         lhs == rhs
     }
 }

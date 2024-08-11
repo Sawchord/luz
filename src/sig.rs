@@ -16,10 +16,10 @@ use zeroize::Zeroize;
 #[derive(Zeroize, Clone, CanonicalSerialize, CanonicalDeserialize)]
 pub struct SecretKey(Fr);
 
-#[derive(Zeroize, Clone, CanonicalSerialize, CanonicalDeserialize)]
+#[derive(Clone, CanonicalSerialize, CanonicalDeserialize)]
 pub struct PublicKey(G1Affine);
 
-#[derive(Zeroize, Clone, CanonicalSerialize, CanonicalDeserialize)]
+#[derive(Clone, CanonicalSerialize, CanonicalDeserialize)]
 pub struct Signature(G2Affine);
 
 // TODO: Proof of possession

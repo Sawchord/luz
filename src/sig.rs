@@ -16,7 +16,7 @@ use zeroize::Zeroize;
 #[derive(Zeroize, Clone, CanonicalSerialize, CanonicalDeserialize)]
 pub struct SecretKey(Fr);
 
-#[derive(Clone, CanonicalSerialize, CanonicalDeserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, CanonicalSerialize, CanonicalDeserialize)]
 pub struct PublicKey(G1Affine);
 
 #[derive(Clone, CanonicalSerialize, CanonicalDeserialize)]

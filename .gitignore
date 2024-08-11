@@ -1,0 +1,4 @@
+*.sage.py
+**/target
+*.lock
+tarpaulin-report.html

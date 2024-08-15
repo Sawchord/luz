@@ -40,17 +40,17 @@ impl Crs {
 
 #[derive(Debug, PartialEq, Eq, CanonicalSerialize, CanonicalDeserialize)]
 pub struct ExtCrs {
-    crs: Crs,
-    lag: LagrangedKZG,
-    g1_eta: G1Affine,
-    domains: Domains,
+    pub(crate) crs: Crs,
+    pub(crate) lag: LagrangedKZG,
+    pub(crate) g1_eta: G1Affine,
+    pub(crate) domains: Domains,
 }
 
 #[derive(Debug, PartialEq, Eq, CanonicalSerialize, CanonicalDeserialize)]
-struct LagrangedKZG {
-    g1_h: Vec<G1Affine>,
-    h1_h: Vec<G1Affine>,
-    g1_l: Vec<G1Affine>,
+pub(crate) struct LagrangedKZG {
+    pub(crate) g1_h: Vec<G1Affine>,
+    pub(crate) h1_h: Vec<G1Affine>,
+    pub(crate) g1_l: Vec<G1Affine>,
 }
 
 impl ExtCrs {

@@ -3,8 +3,8 @@ use ark_serialize::{CanonicalDeserialize, CanonicalSerialize};
 
 #[derive(Debug, PartialEq, Eq, CanonicalSerialize, CanonicalDeserialize)]
 pub struct ThresholdSigInstance {
-    signers: Vec<(PublicKey, u64)>,
-    crs: ExtCrs,
+    pub(crate) signers: Vec<(PublicKey, u64)>,
+    pub(crate) crs: ExtCrs,
 }
 
 impl ThresholdSigInstance {
@@ -12,3 +12,5 @@ impl ThresholdSigInstance {
         Self { signers, crs }
     }
 }
+
+// TODO Verification Key

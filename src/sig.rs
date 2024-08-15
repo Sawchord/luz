@@ -14,10 +14,10 @@ use sha2::Sha256;
 use zeroize::Zeroize;
 
 #[derive(Zeroize, Clone, CanonicalSerialize, CanonicalDeserialize)]
-pub struct SecretKey(Fr);
+pub struct SecretKey(pub(crate) Fr);
 
 #[derive(Debug, Clone, PartialEq, Eq, CanonicalSerialize, CanonicalDeserialize)]
-pub struct PublicKey(G1Affine);
+pub struct PublicKey(pub(crate) G1Affine);
 
 #[derive(Clone, CanonicalSerialize, CanonicalDeserialize)]
 pub struct Signature(G2Affine);
